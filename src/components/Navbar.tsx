@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { ChevronDown, Calendar, ShieldCheck, User, Video, Activity, Sparkles } from 'lucide-react';
+import { ChevronDown, Calendar, ShieldCheck, User, Video, Activity, Sparkles, Layers } from 'lucide-react';
 import { AnatomicalZone } from '../types';
 import { Logo } from './Logo';
 
-export type MainNavTab = 'match' | 'posture5d' | 'journey';
+export type MainNavTab = 'match' | 'conditions3d' | 'posture5d' | 'journey';
 
 interface NavbarProps {
   activeTab: MainNavTab;
@@ -58,6 +58,23 @@ export const Navbar: React.FC<NavbarProps> = ({
             Clinical Triage
           </button>
 
+          {/* 3D & 5D Body Condition Atlas */}
+          <button
+            type="button"
+            onClick={() => onSelectTab('conditions3d')}
+            className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 pb-1 flex items-center gap-1.5 ${
+              activeTab === 'conditions3d'
+                ? 'text-teal-800 border-b-2 border-teal-700 font-bold'
+                : 'text-slate-600'
+            }`}
+          >
+            <Layers className="w-3.5 h-3.5 text-teal-600" />
+            <span>3D/5D Body Atlas</span>
+            <span className="px-1.5 py-0.2 rounded-md bg-teal-100 text-teal-800 text-[10px] font-bold">
+              3D/5D
+            </span>
+          </button>
+
           {/* 5D Postural Video Analysis & Guide Video */}
           <button
             type="button"
@@ -69,8 +86,8 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Video className="w-3.5 h-3.5 text-teal-600" />
-            <span>5D Posture & Guide Video</span>
-            <span className="px-1.5 py-0.2 rounded-md bg-teal-100 text-teal-800 text-[10px] font-bold">
+            <span>5D Posture & Guide</span>
+            <span className="px-1.5 py-0.2 rounded-md bg-slate-100 text-slate-700 text-[10px] font-bold">
               5D
             </span>
           </button>
@@ -206,20 +223,30 @@ export const Navbar: React.FC<NavbarProps> = ({
       </div>
 
       {/* Mobile Tab Strip */}
-      <div className="md:hidden flex items-center justify-around border-t border-slate-100 bg-slate-50 px-2 py-2 text-xs font-semibold text-slate-600">
+      <div className="md:hidden flex items-center justify-around border-t border-slate-100 bg-slate-50 px-1 py-2 text-xs font-semibold text-slate-600 overflow-x-auto">
         <button
           type="button"
           onClick={() => onSelectTab('match')}
-          className={`px-3 py-1.5 rounded-lg transition-colors ${
+          className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors ${
             activeTab === 'match' ? 'bg-white text-teal-800 font-bold shadow-2xs' : 'text-slate-600'
           }`}
         >
-          Clinical Triage
+          Triage
+        </button>
+        <button
+          type="button"
+          onClick={() => onSelectTab('conditions3d')}
+          className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors flex items-center gap-1 ${
+            activeTab === 'conditions3d' ? 'bg-white text-teal-800 font-bold shadow-2xs' : 'text-slate-600'
+          }`}
+        >
+          <Layers className="w-3 h-3 text-teal-600" />
+          <span>3D/5D Atlas</span>
         </button>
         <button
           type="button"
           onClick={() => onSelectTab('posture5d')}
-          className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 ${
+          className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors flex items-center gap-1 ${
             activeTab === 'posture5d' ? 'bg-white text-teal-800 font-bold shadow-2xs' : 'text-slate-600'
           }`}
         >
@@ -229,7 +256,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         <button
           type="button"
           onClick={() => onSelectTab('journey')}
-          className={`px-3 py-1.5 rounded-lg transition-colors flex items-center gap-1 ${
+          className={`px-2.5 py-1.5 rounded-lg whitespace-nowrap transition-colors flex items-center gap-1 ${
             activeTab === 'journey' ? 'bg-white text-teal-800 font-bold shadow-2xs' : 'text-slate-600'
           }`}
         >

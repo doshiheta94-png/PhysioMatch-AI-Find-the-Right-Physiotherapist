@@ -24,7 +24,7 @@ import { FacilityCarousel } from './components/FacilityCarousel';
 import { ClinicalAccordion } from './components/ClinicalAccordion';
 import { FloatingActionButton } from './components/FloatingActionButton';
 import { Logo } from './components/Logo';
-import { Spine3DSimulator } from './components/Spine3DSimulator';
+import { AllConditions3DViewer } from './components/AllConditions3DViewer';
 import {
   ShieldCheck,
   Calendar,
@@ -217,6 +217,27 @@ export default function App() {
             bookings={bookings}
             onBookNew={() => setIsBookingModalOpen(true)}
           />
+        ) : activeTab === 'conditions3d' ? (
+          /* 3D & 5D Interactive Body Condition Atlas Suite */
+          <div className="space-y-6">
+            <div className="max-w-3xl">
+              <div className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-800 bg-teal-50 border border-teal-200 px-3 py-1 rounded-md mb-2">
+                <Layers className="w-3.5 h-3.5 text-teal-600" />
+                <span>Multi-Planar Biomechanical Atlas · All 8 Anatomical Body Conditions</span>
+              </div>
+              <h1 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+                3D & 5D Interactive Condition Atlas & Video Guide
+              </h1>
+              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+                Explore real-time 3D procedural anatomical joint models, simulated 5D dynamic kinematics video feeds with live vector strain telemetry ($X, Y, Z, \theta, dF/dt$), high-resolution pathology cross-section images, and guided rehabilitation videos across all 8 body zones led by Dr. Heta Doshi (PT).
+              </p>
+            </div>
+            <AllConditions3DViewer
+              selectedZone={triage.anatomicalZone}
+              onSelectZone={handleSelectZone}
+              onBookCondition={() => setIsBookingModalOpen(true)}
+            />
+          </div>
         ) : activeTab === 'posture5d' ? (
           /* 5D Postural Video Kinematics & Interactive Guide Video Suite */
           <Postural5DAnalysis />
@@ -341,9 +362,37 @@ export default function App() {
               </div>
             </section>
 
-            {/* Interactive 3D Spine Biomechanics & Posture Balance Challenge Game (Three.js) */}
+            {/* Interactive 3D & 5D Condition Biomechanics & Motion Guide for Selected Body Zone */}
             <section className="space-y-4">
-              <Spine3DSimulator />
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-wider text-teal-800">
+                    Live Anatomical Simulator & Kinematics
+                  </span>
+                  <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+                    3D & 5D Biomechanical Visualizer: {ZONES[triage.anatomicalZone].name}
+                  </h2>
+                  <p className="text-xs text-slate-500 mt-0.5">
+                    Inspect 3D procedural anatomy, live 5D vector loads, and guided exercise videos for all body conditions
+                  </p>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('conditions3d')}
+                    className="px-3 py-1.5 rounded-lg bg-teal-50 hover:bg-teal-100 text-teal-800 border border-teal-200 font-bold text-xs flex items-center gap-1.5 transition-colors"
+                  >
+                    <Layers className="w-3.5 h-3.5 text-teal-600" />
+                    <span>Open Full 8-Zone 3D/5D Atlas</span>
+                  </button>
+                </div>
+              </div>
+
+              <AllConditions3DViewer
+                selectedZone={triage.anatomicalZone}
+                onSelectZone={handleSelectZone}
+                onBookCondition={() => setIsBookingModalOpen(true)}
+              />
             </section>
 
             {/* Step 2: Dr. Heta Doshi Clinical Match Result */}

@@ -278,6 +278,15 @@ export const BodyMap: React.FC<BodyMapProps> = ({
             <p className="text-xs text-slate-600 mt-2 leading-relaxed">
               <strong className="text-slate-800">Common indicators:</strong> {ZONES[selectedZone].commonComplaints}
             </p>
+            <div className="mt-2.5 pt-2 border-t border-teal-200/60 flex items-center justify-between text-[11px]">
+              <span className="text-teal-800 font-semibold flex items-center gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-teal-500 animate-pulse"></span>
+                <span>3D & 5D Kinematic Model Active Below</span>
+              </span>
+              <span className="text-teal-900 font-mono text-[10px] bg-teal-100 px-1.5 py-0.5 rounded">
+                8/8 Modeled
+              </span>
+            </div>
           </div>
 
           {/* Quick Select Buttons Grid */}
