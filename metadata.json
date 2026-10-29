@@ -1,0 +1,6 @@
+{
+  "name": "PhysioMatch AI",
+  "description": "Evidence-informed physiotherapy matching platform pairing patients with verified clinical specialists based on anatomical condition, techniques, and verified credentials.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
