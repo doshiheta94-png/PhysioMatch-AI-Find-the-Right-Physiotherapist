@@ -26,6 +26,7 @@ import { FloatingActionButton } from './components/FloatingActionButton';
 import { Logo } from './components/Logo';
 import { AllConditions3DViewer } from './components/AllConditions3DViewer';
 import { MusculoskeletalExerciseSuite } from './components/MusculoskeletalExerciseSuite';
+import { PremiumVideoVault } from './components/PremiumVideoVault';
 import { AppLanguage, TRANSLATIONS } from './data/translations';
 import {
   ShieldCheck,
@@ -46,7 +47,7 @@ type CurrencyCode = 'USD' | 'INR' | 'GBP' | 'EUR';
 
 const CURRENCIES: Record<CurrencyCode, { symbol: string; initial: number; followup: number; label: string }> = {
   USD: { symbol: '$', initial: 75, followup: 50, label: 'USD ($)' },
-  INR: { symbol: '₹', initial: 1500, followup: 1000, label: 'INR (₹)' },
+  INR: { symbol: '₹', initial: 800, followup: 400, label: 'INR (₹)' },
   GBP: { symbol: '£', initial: 60, followup: 40, label: 'GBP (£)' },
   EUR: { symbol: '€', initial: 70, followup: 45, label: 'EUR (€)' },
 };
@@ -232,12 +233,20 @@ export default function App() {
             bookings={bookings}
             onBookNew={() => setIsBookingModalOpen(true)}
           />
+        ) : activeTab === 'videovault' ? (
+          /* Separate Section: Full HD Condition Masterclasses & Exercise Video Vault (₹200 GPay on 9737555022) */
+          <PremiumVideoVault
+            currentLanguage={currentLanguage}
+            onLanguageChange={setCurrentLanguage}
+            onBookConsultation={() => setIsBookingModalOpen(true)}
+          />
         ) : activeTab === 'exercises' ? (
           /* Musculoskeletal & Sports Exercise Suite with Easy Video and Voice Input in English, Hindi, and Gujarati */
           <MusculoskeletalExerciseSuite
             currentLanguage={currentLanguage}
             onLanguageChange={setCurrentLanguage}
             onBookExerciseConsultation={() => setIsBookingModalOpen(true)}
+            onOpenVideoVault={() => setActiveTab('videovault')}
           />
         ) : activeTab === 'conditions3d' ? (
           /* 3D & 5D Interactive Body Condition Atlas Suite */

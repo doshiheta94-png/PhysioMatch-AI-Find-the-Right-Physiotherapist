@@ -21,13 +21,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
   const [selectedTime, setSelectedTime] = useState<string>(
     therapist.availableSlots[0]?.times[0] || ''
   );
-  const [consultationType, setConsultationType] = useState<'In-Clinic' | 'Telehealth'>(
-    therapist.consultationTypes[0] || 'In-Clinic'
-  );
+  const [consultationType, setConsultationType] = useState<
+    'In-Clinic' | 'Telehealth' | 'Home Visit' | 'Telerehab / Video Call' | 'In-Clinic Assessment'
+  >(therapist.consultationTypes[0] || 'Telerehab / Video Call');
 
   const [patientName, setPatientName] = useState(triage.patientName || '');
   const [patientEmail, setPatientEmail] = useState(triage.patientEmail || '');
   const [patientPhone, setPatientPhone] = useState(triage.patientPhone || '');
+  const [copiedGPayModal, setCopiedGPayModal] = useState<boolean>(false);
 
   // Pre-visit AI Intake Note state
   const [intakeNote, setIntakeNote] = useState<string>('');
@@ -112,6 +113,14 @@ export const BookingModal: React.FC<BookingModalProps> = ({
         year: 'numeric',
       }),
       intakeSummary: intakeNote || undefined,
+      paymentBreakdown: {
+        total: 800,
+        advanceDeposit: 400,
+        postRehabBalance: 400,
+        currency: '₹',
+        paymentMethod: 'Google Pay (GPay) / UPI',
+        gpayNumber: '9737555022',
+      },
     };
 
     setConfirmedBooking(newBooking);
@@ -123,6 +132,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
     navigator.clipboard.writeText(intakeNote);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+  };
+
+  const copyGPayNumber = () => {
+    navigator.clipboard.writeText('9737555022');
+    setCopiedGPayModal(true);
+    setTimeout(() => setCopiedGPayModal(false), 2000);
   };
 
   return (
@@ -186,11 +201,19 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                     {therapist.clinicName}
                   </span>
                 </div>
-                <div className="flex justify-between pt-2 border-t border-slate-200">
-                  <span className="text-slate-500">Initial Assessment Fee:</span>
-                  <span className="font-mono font-bold text-slate-900">
-                    {therapist.currency}{therapist.feeInitial}
-                  </span>
+                <div className="pt-2 border-t border-slate-200 space-y-1">
+                  <div className="flex justify-between">
+                    <span className="text-slate-500">Total Consultation:</span>
+                    <span className="font-mono font-bold text-slate-900">₹800</span>
+                  </div>
+                  <div className="flex justify-between text-teal-800 font-semibold">
+                    <span>Advance Booking Deposit:</span>
+                    <span className="font-mono font-bold">₹400 (Paid / Due via GPay: 9737555022)</span>
+                  </div>
+                  <div className="flex justify-between text-slate-600">
+                    <span>Remaining Balance:</span>
+                    <span className="font-mono font-semibold">₹400 (Pay after rehab)</span>
+                  </div>
                 </div>
               </div>
 
@@ -244,19 +267,19 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   </div>
                 </div>
                 <div className="text-right">
-                  <div className="text-xs font-mono font-bold text-slate-900">
-                    {therapist.currency}{therapist.feeInitial}
+                  <div className="text-sm font-mono font-extrabold text-teal-800">
+                    ₹800 Total
                   </div>
-                  <div className="text-[11px] text-slate-400">60 min</div>
+                  <div className="text-[11px] text-slate-500">₹400 to Book + ₹400 After Rehab</div>
                 </div>
               </div>
 
-              {/* Consultation Format */}
+              {/* Consultation Format Selection */}
               <div>
                 <label className="text-xs font-semibold text-slate-800 uppercase tracking-wider block mb-2">
                   Care Delivery Format
                 </label>
-                <div className="grid grid-cols-2 gap-2">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
                   {therapist.consultationTypes.map((type) => (
                     <button
                       key={type}
@@ -264,7 +287,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                       onClick={() => setConsultationType(type)}
                       className={`p-3 text-left rounded-xl border transition-all text-xs font-semibold ${
                         consultationType === type
-                          ? 'border-teal-600 bg-teal-50/70 text-teal-900 shadow-xs'
+                          ? 'border-teal-600 bg-teal-50/80 text-teal-900 shadow-xs'
                           : 'border-slate-200 bg-white text-slate-700 hover:border-slate-300'
                       }`}
                     >
@@ -272,13 +295,59 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                         <span>{type}</span>
                         {consultationType === type && <Check className="w-3.5 h-3.5 text-teal-600" />}
                       </div>
-                      <div className="text-[11px] font-normal text-slate-500 mt-0.5">
-                        {type === 'In-Clinic'
-                          ? therapist.clinicAddress
-                          : 'High-definition secure video session'}
+                      <div className="text-[11px] font-normal text-slate-500 mt-1">
+                        {type === 'Home Visit'
+                          ? 'In-person rehabilitation visit at your home (Vadodara)'
+                          : type === 'Telerehab / Video Call'
+                          ? 'High-definition secure video session worldwide'
+                          : 'Comprehensive assessment at Vadodara clinic'}
                       </div>
                     </button>
                   ))}
+                </div>
+              </div>
+
+              {/* Consultation Split Payment Box (₹400 Booking Deposit + ₹400 Post-Rehab) */}
+              <div className="p-4 bg-slate-900 text-white rounded-2xl border border-slate-800 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-teal-400 animate-pulse"></span>
+                    <span className="text-xs font-bold text-white">Transparent Split Payment Protocol</span>
+                  </div>
+                  <span className="px-2 py-0.5 rounded-full bg-teal-500/20 text-teal-300 font-mono text-[11px] font-bold border border-teal-500/30">
+                    Total: ₹800
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                  <div className="p-3 bg-slate-800/90 rounded-xl border border-slate-700">
+                    <div className="text-[11px] text-slate-400 uppercase font-bold">1. Advance Booking Deposit</div>
+                    <div className="text-lg font-mono font-extrabold text-teal-300 mt-0.5">₹400</div>
+                    <div className="text-[11px] text-slate-300 mt-0.5">Payable now via GPay to confirm slot</div>
+                  </div>
+
+                  <div className="p-3 bg-slate-800/90 rounded-xl border border-slate-700">
+                    <div className="text-[11px] text-slate-400 uppercase font-bold">2. Balance After Rehab</div>
+                    <div className="text-lg font-mono font-extrabold text-white mt-0.5">₹400</div>
+                    <div className="text-[11px] text-slate-300 mt-0.5">Payable after treatment is completed</div>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap items-center justify-between gap-2 pt-1 border-t border-slate-800 text-xs">
+                  <div className="flex items-center gap-2">
+                    <span className="text-slate-400">GPay Number:</span>
+                    <span className="font-mono font-bold text-teal-300">9737555022</span>
+                    <span className="text-slate-400">(Dr. Heta Doshi)</span>
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={copyGPayNumber}
+                    className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-teal-300 border border-slate-700 text-[11px] font-bold flex items-center gap-1 transition-colors"
+                  >
+                    {copiedGPayModal ? <Check className="w-3 h-3 text-teal-400" /> : <Copy className="w-3 h-3" />}
+                    <span>{copiedGPayModal ? 'Copied' : 'Copy GPay Number'}</span>
+                  </button>
                 </div>
               </div>
 
@@ -437,7 +506,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                   type="submit"
                   className="px-6 py-2.5 text-xs font-semibold text-white bg-slate-900 hover:bg-teal-700 rounded-lg transition-colors shadow-xs"
                 >
-                  Confirm Appointment ({therapist.currency}{therapist.feeInitial})
+                  Confirm & Reserve Slot (₹400 Advance · Total ₹800)
                 </button>
               </div>
             </form>

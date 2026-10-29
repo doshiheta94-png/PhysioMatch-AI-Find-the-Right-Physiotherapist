@@ -69,7 +69,15 @@ export interface Physiotherapist {
   feeFollowup: number;
   currency: string;
   sessionDurationMinutes: number;
-  consultationTypes: ('In-Clinic' | 'Telehealth')[];
+  consultationTypes: (
+    | 'In-Clinic'
+    | 'Telehealth'
+    | 'Home Visit'
+    | 'Telerehab / Video Call'
+    | 'In-Clinic Assessment'
+  )[];
+  feeAdvanceDeposit?: number;
+  feePostRehabBalance?: number;
   acceptsInsurance: boolean;
   insuranceProviders: string[];
   availableSlots: AvailableSlot[];
@@ -97,7 +105,12 @@ export interface Booking {
   clinicName: string;
   appointmentDate: string;
   appointmentTime: string;
-  consultationType: 'In-Clinic' | 'Telehealth';
+  consultationType:
+    | 'In-Clinic'
+    | 'Telehealth'
+    | 'Home Visit'
+    | 'Telerehab / Video Call'
+    | 'In-Clinic Assessment';
   patientName: string;
   patientEmail: string;
   patientPhone: string;
@@ -107,6 +120,14 @@ export interface Booking {
   createdAt: string;
   intakeSummary?: string;
   clinicalNotes?: string;
+  paymentBreakdown?: {
+    total: number;
+    advanceDeposit: number;
+    postRehabBalance: number;
+    currency: string;
+    paymentMethod: string;
+    gpayNumber: string;
+  };
 }
 
 // Home Exercise Program (HEP)

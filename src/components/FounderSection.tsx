@@ -100,8 +100,21 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
             </div>
           </div>
 
+          {/* Care Delivery & Pricing Tag */}
+          <div className="p-3 bg-slate-800/90 rounded-2xl border border-slate-700/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-teal-400 animate-pulse"></span>
+              <span className="text-white font-bold">
+                Home Visit · Telerehab Video Consultation: ₹800 Total
+              </span>
+            </div>
+            <div className="text-teal-300 font-mono text-[11px] font-semibold">
+              Pay ₹400 Advance to Reserve · Balance ₹400 After Rehab
+            </div>
+          </div>
+
           {/* Contact Details & Direct Booking Action */}
-          <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800">
+          <div className="flex flex-wrap items-center justify-between gap-4 pt-2 border-t border-slate-800">
             <div className="flex items-center gap-4 text-xs text-slate-300 flex-wrap">
               <div className="flex items-center gap-1.5 font-medium text-teal-300">
                 <MapPin className="w-3.5 h-3.5 text-teal-400" />
@@ -113,7 +126,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
                 className="hover:text-teal-300 transition-colors flex items-center gap-1.5 font-medium"
               >
                 <Phone className="w-3.5 h-3.5 text-teal-400" />
-                <span>Mobile: {founder.contactMobile}</span>
+                <span>GPay / Mobile: {founder.contactMobile}</span>
               </a>
             </div>
 
@@ -131,7 +144,7 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
                 className="px-5 py-2.5 text-xs font-bold text-white bg-teal-600 hover:bg-teal-500 rounded-xl transition-all shadow-md flex items-center gap-1.5 active:scale-95"
               >
                 <Calendar className="w-4 h-4" />
-                <span>Consult with Dr. Heta Doshi ({currencySymbol}{initialFee})</span>
+                <span>Book Consultation (₹400 to Reserve)</span>
               </button>
             </div>
           </div>

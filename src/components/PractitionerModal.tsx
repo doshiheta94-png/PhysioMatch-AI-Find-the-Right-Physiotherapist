@@ -208,10 +208,10 @@ export const PractitionerModal: React.FC<PractitionerModalProps> = ({
             </div>
             <div className="text-left sm:text-right">
               <div className="text-sm font-bold font-mono text-slate-900 tabular-nums">
-                {therapist.currency}{therapist.feeInitial} Initial / {therapist.currency}{therapist.feeFollowup} Follow-up
+                ₹800 Total (₹400 Booking Deposit + ₹400 Post-Rehab)
               </div>
-              <div className="text-[11px] text-slate-500">
-                {therapist.sessionDurationMinutes} min · {therapist.consultationTypes.join(' & ')}
+              <div className="text-[11px] text-teal-800 font-semibold">
+                Home Visit · Telerehab Video · GPay: 9737555022
               </div>
             </div>
           </div>

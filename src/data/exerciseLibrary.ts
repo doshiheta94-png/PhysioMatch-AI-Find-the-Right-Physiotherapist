@@ -625,4 +625,171 @@ export const EXERCISE_LIBRARY: MusculoskeletalExercise[] = [
     targetMuscles: ['Biceps Femoris (Hamstring)', 'Gluteus Maximus', 'Erector Spinae'],
     animationType: 'athletic_deadlift',
   },
+
+  {
+    id: 'elbow_tyler_twist',
+    category: 'upper_limb',
+    title: {
+      en: 'Tyler Twist & Eccentric Wrist Extensor Loading (Tennis Elbow)',
+      hi: 'टायलर ट्विस्ट और कलाई एक्सटेंसर एक्सेंट्रिक लोडिंग (टेनिस एल्बो)',
+      gu: 'ટાઈલર ટ્વિસ્ટ અને કાંડા એક્સટેન્સર એક્સેન્ટ્રિક લોડિંગ (ટેનિસ એલ્બો)',
+    },
+    targetArea: {
+      en: 'Common Extensor Tendon & Lateral Epicondyle (Elbow)',
+      hi: 'कॉमन एक्सटेंसर टेंडन और लेटरल एपिकॉन्डाइल (कोहनी)',
+      gu: 'કોમન એક્સટેન્સર ટેન્ડન અને લેટરલ એપીકોન્ડાઇલ (કોણી)',
+    },
+    categoryLabel: {
+      en: 'Elbow & Tendinopathy Rehabilitation',
+      hi: 'कोहनी और टेंडिनोपैथी पुनर्वास',
+      gu: 'કોણી અને ટેન્ડિનોપેથી પુનર્વસન',
+    },
+    difficulty: 'Intermediate',
+    reps: 12,
+    sets: 3,
+    holdSeconds: 3,
+    frequency: {
+      en: 'Daily 2 sessions (Morning and Evening)',
+      hi: 'प्रतिदिन 2 बार (सुबह और शाम)',
+      gu: 'દરરોજ 2 વખત (સવારે અને સાંજે)',
+    },
+    equipment: {
+      en: 'FlexBar or Rolled Dense Towel',
+      hi: 'फ्लेक्सबार या गोल लपेटा हुआ तौलिया',
+      gu: 'ફ્લેક્સબાર અથવા રોલ કરેલો ટુવાલ',
+    },
+    stepByStep: {
+      en: [
+        'Grasp the lower end of the resistance bar with your affected hand in full wrist extension.',
+        'Grasp the upper end with your other hand, facing your palm forward.',
+        'Twist the bar by flexing the non-affected wrist while maintaining the affected wrist in extension.',
+        'Extend both arms straight out in front of you while keeping the twist loaded.',
+        'Slowly release the twist with the affected wrist moving into controlled eccentric flexion over 4 seconds.',
+      ],
+      hi: [
+        'प्रभावित हाथ से बार के निचले सिरे को कलाई को पूरी तरह ऊपर उठाकर पकड़ें।',
+        'दूसरे हाथ से बार के ऊपरी सिरे को पकड़ें, हथेली आगे की ओर रहे।',
+        'स्वस्थ हाथ की कलाई को मोड़ते हुए बार को मरोड़ें (ट्विस्ट करें)।',
+        'दोनों हाथों को सीधा सामने लाएं और मरोड़ को बनाए रखें।',
+        'प्रभावित कलाई को 4 सेकंड के दौरान धीरे-धीरे ढीला छोड़ते हुए एक्सेंट्रिक खिंचाव दें।',
+      ],
+      gu: [
+        'જે હાથમાં દુખાવો હોય તેના કાંડાને ઊંચું રાખીને બારના નીચેના છેડાને પકડો.',
+        'બીજા હાથથી બારના ઉપરના છેડાને પકડીને આગળની તરફ રાખો.',
+        'સાજા હાથ વડે બારને મરોડીને ટ્વિસ્ટ કરો જ્યારે અસરગ્રસ્ત કાંડું ઊંચું જ રહે.',
+        'બંને હાથ સીધા આગળ લંબાવો અને ટ્વિસ્ટનું દબાણ જાળવી રાખો.',
+        'દુખાવાવાળા કાંડાને 4 સેકન્ડમાં ધીમે-ધીમે નીચે લાવીને એક્સેન્ટ્રિક લોડ આપો.',
+      ],
+    },
+    voiceGuideScript: {
+      en: 'Hold the bar with your wrist extended. Twist with other hand. Extend both arms straight. Now slowly untwist with your affected wrist over four seconds. Controlled eccentric loading builds collagen.',
+      hi: 'कलाई ऊपर उठाकर बार पकड़ें। दूसरे हाथ से मरोड़ें। दोनों हाथ सीधे करें। अब प्रभावित कलाई से चार सेकंड में धीरे-धीरे खोलें। नियंत्रित गति से टेंडन मजबूत होगा।',
+      gu: 'કાંડું ઊંચું રાખીને બાર પકડો. બીજા હાથથી ટ્વિસ્ટ કરો. બંને હાથ સીધા કરો. હવે ધીમેથી 4 સેકન્ડમાં અસરગ્રસ્ત કાંડું નીચે લાવો. સ્નાયુનું કોલેજન મજબૂત થશે.',
+    },
+    drHetaClinicalTip: {
+      en: 'Isolated eccentric wrist extension (Tyler Twist) provides directed mechanical mechanotransduction to stimulate tenocyte collagen remodeling without aggravating the inflamed radial head.',
+      hi: 'टायलर ट्विस्ट तकनीक एक्सेंट्रिक लोडिंग के जरिए टेंडन में कोलाजन का निर्माण करती है, जिससे कोहनी की पुरानी सूजन तेजी से ठीक होती है।',
+      gu: 'ટાઈલર ટ્વિસ્ટ ટેકનિક એક્સેન્ટ્રિક લોડિંગ આપીને કોણીના ક્રોનિક ટેન્ડનને હળવેથી સાજું કરે છે અને સોજો ઝડપથી દૂર કરે છે.',
+    },
+    precautions: {
+      en: [
+        'Do not allow the bar to snap back rapidly; maintain continuous slow eccentric control.',
+        'Discontinue if sharp electrical shooting pain radiates down to the fingers.',
+      ],
+      hi: [
+        'बार को झटके से वापस न आने दें; हमेशा 4 सेकंड की धीमी गति रखें।',
+        'यदि उंगलियों में बिजली जैसा तेज दर्द हो तो रोक दें।',
+      ],
+      gu: [
+        'બારને ઝટકાથી છૂટવા ન દેશો; ધીમી ગતિમાં 4 સેકન્ડ સુધી નિયંત્રણ રાખો.',
+        'જો આંગળીઓમાં તેજ વીજળી જેવો દુખાવો થાય તો તરત અટકાવો.',
+      ],
+    },
+    targetMuscles: ['Extensor Carpi Radialis Brevis (ECRB)', 'Extensor Digitorum', 'Brachioradialis'],
+    animationType: 'elbow_twist',
+  },
+
+  {
+    id: 'thoracic_catcow',
+    category: 'spine',
+    title: {
+      en: 'Cat-Cow Segmental Thoracic Extension & Ribcage Mobilization',
+      hi: 'कैट-काउ थोरैसिक एक्सटेंशन और रिबकेज मोबिलाइजेशन (पीठ और छाती)',
+      gu: 'કેટ-કાઉ થોરેસિક એક્સટેન્શન અને પાંસળીઓની ગતિશીલતા (પીઠ અને છાતી)',
+    },
+    targetArea: {
+      en: 'T1-T12 Thoracic Spine & Costovertebral Joints',
+      hi: 'T1-T12 थोरैसिक रीढ़ और पसलियों के जोड़',
+      gu: 'T1-T12 થોરેસિક કરોડરજ્જુ અને પાંસળીઓના સાંધા',
+    },
+    categoryLabel: {
+      en: 'Thoracic Kyphosis & Postural Expansion',
+      hi: 'थोरैसिक काइफोसिस और पोस्चर विस्तार',
+      gu: 'થોરેસિક કાયફોસિસ અને પોશ્ચર સુધારણા',
+    },
+    difficulty: 'Beginner',
+    reps: 10,
+    sets: 3,
+    holdSeconds: 4,
+    frequency: {
+      en: 'Twice daily or after every 90 minutes of seated desk work',
+      hi: 'दिन में 2 बार या कंप्यूटर पर काम के दौरान हर 90 मिनट में',
+      gu: 'દિવસમાં 2 વાર અથવા કમ્પ્યુટર કામ દરમિયાન દર 90 મિનિટે',
+    },
+    equipment: {
+      en: 'Exercise Mat',
+      hi: 'एक्सरसाइज मैट',
+      gu: 'એક્સરસાઇઝ મેટ',
+    },
+    stepByStep: {
+      en: [
+        'Start on hands and knees (quadruped) with wrists directly under shoulders and knees under hips.',
+        'Exhale deeply while pulling your navel toward your spine and rounding your mid-back toward the ceiling (Cat Pose).',
+        'Drop your head gently and hold the segmental flexion for 3 seconds.',
+        'Inhale deeply while lifting your chest forward and upward, creating extension through the thoracic spine (Cow Pose).',
+        'Draw your shoulder blades down and back, opening your clavicles without hyperextending your lower back.',
+      ],
+      hi: [
+        'हाथों और घुटनों के बल चौपाया मुद्रा में आएं, हाथ कंधों के ठीक नीचे और घुटने कूल्हों के नीचे हों।',
+        'गहरी सांस छोड़ते हुए नाभि को रीढ़ की ओर खींचें और मध्य पीठ को छत की ओर गोल करें (कैट पोज़)।',
+        'सिर को नीचे झुकाएं और 3 सेकंड तक रुकें।',
+        'गहरी सांस लेते हुए छाती को आगे और ऊपर उठाएं, पीठ के ऊपरी हिस्से को फैलाएं (काउ पोज़)।',
+        'कंधों को पीछे खींचें और छाती को खोलें, कमर पर ज्यादा दबाव न डालें।',
+      ],
+      gu: [
+        'બંને હાથ અને ઘૂંટણ પર બિલાડીની મુદ્રામાં આવો, કાંડા ખભા નીચે અને ઘૂંટણ થાપા નીચે હોવા જોઈએ.',
+        'ઊંડો શ્વાસ બહાર કાઢીને પેટ અંદર ખેંચો અને પીઠના વચ્ચેના ભાગને કૂબડાની જેમ છત તરફ ઊંચો કરો (કેટ પોઝ).',
+        'માથું હળવેથી નીચે નમાવો અને 3 સેકન્ડ હોલ્ડ કરો.',
+        'ઊંડો શ્વાસ અંદર લેતા છાતી આગળ અને ઊંચી કરો અને પીઠને સુંદર આકાર આપો (કાઉ પોઝ).',
+        'ખભા પાછળ ખેંચીને છાતી ખોલો, કમર પર વધારાનું વજન ન આપો.',
+      ],
+    },
+    voiceGuideScript: {
+      en: 'Hands and knees on mat. Breathe out, tuck your tailbone and round your mid-back high like a cat. Hold three seconds. Inhale, lift your chest, open your ribs forward into cow pose. Smooth spinal wave.',
+      hi: 'हाथ और घुटने मैट पर रखें। सांस छोड़ें और पीठ को बिल्ली की तरह ऊपर गोल करें। 3 सेकंड रुकें। सांस लें, छाती ऊपर उठाएं और काउ पोज़ में आएं। बहुत अच्छा खिंचाव।',
+      gu: 'હાથ અને ઘૂંટણ મેટ પર રાખો. શ્વાસ બહાર કાઢીને પીઠ બિલાડીની જેમ ગોળ ઊંચી કરો. 3 સેકન્ડ હોલ્ડ કરો. શ્વાસ લો, છાતી ઊંચી કરીને કાઉ પોઝમાં આવો. સુંદર કસરત.',
+    },
+    drHetaClinicalTip: {
+      en: 'Isolate movement to the mid-back (T4-T8). Avoid dumping all extension into the hypermobile lumbar spine; actively drive the sternum forward to reverse desk slouch.',
+      hi: 'मध्य-पीठ (T4-T8) की गति पर ध्यान केंद्रित करें। कमर को ज्यादा न झुकाएं, बल्कि छाती की हड्डी को आगे खोलकर कंप्यूटर के झुकाव को ठीक करें।',
+      gu: 'વચ્ચેની પીઠ (T4-T8) ની હલનચલન પર ધ્યાન આપો. કમર પર વધુ ભાર આપ્યા વગર છાતી આગળ ખોલીને બેસી રહેવાથી થતા કૂબડાપણાને દૂર કરો.',
+    },
+    precautions: {
+      en: [
+        'Do not crane your neck backward excessively during the Cow phase.',
+        'If wrist pain occurs, perform on fists or forearms.',
+      ],
+      hi: [
+        'काउ पोज़ के दौरान गर्दन को ज्यादा पीछे न मरोड़ें।',
+        'यदि कलाई में दर्द हो तो मुट्ठी या अग्रभाग पर करें।',
+      ],
+      gu: [
+        'કાઉ પોઝ દરમિયાન ગરદનને બહુ પાછળ ન ખેંચો.',
+        'જો કાંડામાં દુખાવો થાય તો મુઠ્ઠી પર કસરત કરો.',
+      ],
+    },
+    targetMuscles: ['Thoracic Erector Spinae', 'Rhomboids', 'Middle Trapezius', 'Intercostals'],
+    animationType: 'thoracic_catcow',
+  },
 ];
+

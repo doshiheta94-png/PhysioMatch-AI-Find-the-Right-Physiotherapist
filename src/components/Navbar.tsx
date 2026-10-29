@@ -14,8 +14,9 @@ import {
 import { AnatomicalZone } from '../types';
 import { Logo } from './Logo';
 import { AppLanguage, TRANSLATIONS } from '../data/translations';
+import { Play } from 'lucide-react';
 
-export type MainNavTab = 'match' | 'conditions3d' | 'exercises' | 'posture5d' | 'journey';
+export type MainNavTab = 'match' | 'conditions3d' | 'exercises' | 'posture5d' | 'journey' | 'videovault';
 
 interface NavbarProps {
   activeTab: MainNavTab;
@@ -144,6 +145,23 @@ export const Navbar: React.FC<NavbarProps> = ({
                 {bookingCount}
               </span>
             )}
+          </button>
+
+          {/* Dedicated Section: HD Video Vault (₹200 GPay on 9737555022) */}
+          <button
+            type="button"
+            onClick={() => onSelectTab('videovault')}
+            className={`hover:text-slate-900 transition-colors whitespace-nowrap shrink-0 pb-1 flex items-center gap-1.5 ${
+              activeTab === 'videovault'
+                ? 'text-teal-800 border-b-2 border-teal-700 font-bold'
+                : 'text-slate-600'
+            }`}
+          >
+            <Play className="w-3.5 h-3.5 text-teal-600 fill-teal-600" />
+            <span>{t.videoVault}</span>
+            <span className="px-1.5 py-0.2 rounded-md bg-teal-100 text-teal-800 text-[10px] font-bold">
+              ₹200 GPay
+            </span>
           </button>
 
           {/* Specialties Dropdown with Hover Effect */}
@@ -347,6 +365,16 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <Activity className="w-3 h-3 text-teal-600" />
           <span>Journey {bookingCount > 0 && `(${bookingCount})`}</span>
+        </button>
+        <button
+          type="button"
+          onClick={() => onSelectTab('videovault')}
+          className={`px-2 py-1.5 rounded-lg whitespace-nowrap transition-colors flex items-center gap-1 ${
+            activeTab === 'videovault' ? 'bg-white text-teal-800 font-bold shadow-2xs' : 'text-slate-600'
+          }`}
+        >
+          <Play className="w-3 h-3 text-teal-600 fill-teal-600" />
+          <span>Videos (₹200)</span>
         </button>
       </div>
     </header>

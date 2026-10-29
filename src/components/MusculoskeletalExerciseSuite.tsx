@@ -32,12 +32,14 @@ interface MusculoskeletalExerciseSuiteProps {
   currentLanguage: AppLanguage;
   onLanguageChange: (lang: AppLanguage) => void;
   onBookExerciseConsultation?: (exerciseName: string) => void;
+  onOpenVideoVault?: () => void;
 }
 
 export const MusculoskeletalExerciseSuite: React.FC<MusculoskeletalExerciseSuiteProps> = ({
   currentLanguage,
   onLanguageChange,
   onBookExerciseConsultation,
+  onOpenVideoVault,
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<ExerciseCategory | 'all'>('all');
   const [selectedExerciseId, setSelectedExerciseId] = useState<string>(EXERCISE_LIBRARY[0].id);
@@ -671,6 +673,84 @@ export const MusculoskeletalExerciseSuite: React.FC<MusculoskeletalExerciseSuite
               </text>
             </g>
           )}
+
+          {/* 8. Tyler Twist (Tennis Elbow Eccentric Loading) */}
+          {animType === 'elbow_twist' && (
+            <g transform="translate(130, 70)">
+              {/* Torso */}
+              <line x1="30" y1="80" x2="30" y2="180" stroke="#f1f5f9" strokeWidth="16" strokeLinecap="round" />
+              <circle cx="30" cy="55" r="16" fill="#f1f5f9" />
+              {/* Forearm extended holding FlexBar */}
+              <line x1="30" y1="95" x2="110" y2="95" stroke="#f1f5f9" strokeWidth="12" strokeLinecap="round" />
+              {/* Affected Wrist extending and releasing into flexion */}
+              <line
+                x1="110"
+                y1="95"
+                x2="140"
+                y2={95 - 20 + progress * 35}
+                stroke="#2dd4bf"
+                strokeWidth="10"
+                strokeLinecap="round"
+              />
+              {/* FlexBar resistance rod twisting */}
+              <rect
+                x="135"
+                y={65 + progress * 20}
+                width="16"
+                height="70"
+                rx="6"
+                fill="#facc15"
+                stroke="#ca8a04"
+                strokeWidth="2"
+                transform={`rotate(${progress * 25 - 12} 143 ${100 + progress * 10})`}
+              />
+              {/* Radial Head / Common Extensor Tendon Highlight */}
+              <circle cx="108" cy="95" r="6" fill="#0d9488" className="animate-ping" />
+              <circle cx="108" cy="95" r="5" fill="#0d9488" />
+              <text x="50" y="35" fill="#facc15" fontSize="11" fontWeight="bold">
+                Wrist Eccentric Load: {(progress * 45).toFixed(0)}°
+              </text>
+            </g>
+          )}
+
+          {/* 9. Cat-Cow Segmental Thoracic Mobilization */}
+          {animType === 'thoracic_catcow' && (
+            <g transform="translate(120, 80)">
+              {/* Mat */}
+              <line x1="0" y1="160" x2="200" y2="160" stroke="#0d9488" strokeWidth="6" />
+              {/* Arms (supporting quadruped) */}
+              <line x1="40" y1="110" x2="40" y2="160" stroke="#f1f5f9" strokeWidth="10" strokeLinecap="round" />
+              {/* Thighs / Legs (supporting quadruped) */}
+              <line x1="160" y1="115" x2="160" y2="160" stroke="#f1f5f9" strokeWidth="12" strokeLinecap="round" />
+              {/* Dynamic Spine wave: arching high (Cat) -> sinking into thoracic extension (Cow) */}
+              <path
+                d={`M 40 110 Q 100 ${75 + progress * 70} 160 115`}
+                stroke="#2dd4bf"
+                strokeWidth="14"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* Head moving dynamically with spine */}
+              <circle
+                cx={25}
+                cy={105 - 20 + progress * 35}
+                r="16"
+                fill="#f1f5f9"
+                stroke="#0d9488"
+                strokeWidth="2"
+              />
+              {/* Mid-thoracic mobility indicator */}
+              <circle
+                cx="100"
+                cy={75 + progress * 70}
+                r="6"
+                fill="#facc15"
+              />
+              <text x="60" y="30" fill="#facc15" fontSize="11" fontWeight="bold">
+                Thoracic Motion: {progress > 0.5 ? 'Cow Extension' : 'Cat Flexion'}
+              </text>
+            </g>
+          )}
         </svg>
 
         {/* HUD Overlay Badge: Concentric vs Eccentric Phase */}
@@ -835,6 +915,36 @@ export const MusculoskeletalExerciseSuite: React.FC<MusculoskeletalExerciseSuite
                 {voiceFeedback}
               </span>
             )}
+          </div>
+        )}
+
+        {/* Separate Option Banner: All-Condition Video Library (₹200 GPay on 9737555022) */}
+        {onOpenVideoVault && (
+          <div className="mt-5 p-4 rounded-2xl bg-gradient-to-r from-teal-950/90 to-slate-900 border border-teal-500/40 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-xl bg-teal-600 flex items-center justify-center text-white shrink-0 shadow-sm">
+                <Play className="w-5 h-5 fill-white" />
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-bold text-white">Full HD Video Masterclasses & Voice Library</span>
+                  <span className="px-2 py-0.5 rounded-full bg-teal-400 text-slate-950 text-[10px] font-extrabold uppercase">
+                    ₹200 GPay
+                  </span>
+                </div>
+                <p className="text-xs text-slate-300 mt-0.5">
+                  Unlock complete high-definition video demonstrations for all 8 body conditions via Google Pay on <strong className="text-teal-300 font-mono">9737555022</strong>.
+                </p>
+              </div>
+            </div>
+            <button
+              type="button"
+              onClick={onOpenVideoVault}
+              className="px-5 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs flex items-center gap-2 transition-all shadow-md shrink-0 self-stretch md:self-auto justify-center"
+            >
+              <span>Open Video Vault</span>
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         )}
 

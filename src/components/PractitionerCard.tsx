@@ -106,7 +106,7 @@ export const PractitionerCard: React.FC<PractitionerCardProps> = ({
               </span>
               <span aria-hidden="true">·</span>
               <span className="font-semibold text-slate-800 font-mono tabular-nums">
-                {therapist.currency}{therapist.feeInitial} initial
+                {therapist.currency}{therapist.feeInitial} (₹400 advance + ₹400 post-rehab)
               </span>
             </div>
 

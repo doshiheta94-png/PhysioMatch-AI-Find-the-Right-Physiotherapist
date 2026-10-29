@@ -34,6 +34,10 @@ export interface TranslationDictionary {
   filterUpperLimb: string;
   filterLowerLimb: string;
   filterSports: string;
+  videoVault: string;
+  videoVaultTag: string;
+  videoVaultPrice: string;
+  consultationSplitNote: string;
 }
 
 export const TRANSLATIONS: Record<AppLanguage, TranslationDictionary> = {
@@ -71,6 +75,10 @@ export const TRANSLATIONS: Record<AppLanguage, TranslationDictionary> = {
     filterUpperLimb: 'Shoulder & Arm',
     filterLowerLimb: 'Knee & Hip',
     filterSports: 'Sports Athletic',
+    videoVault: 'HD Video Vault',
+    videoVaultTag: '₹200 GPay Pass',
+    videoVaultPrice: '₹200 Lifetime Pass',
+    consultationSplitNote: 'Home Visit / Telerehab / Video Call: ₹800 (Pay ₹400 advance to book + ₹400 after rehab)',
   },
   hi: {
     clinicalTriage: 'क्लीनिकल ट्राइएज',
@@ -106,6 +114,10 @@ export const TRANSLATIONS: Record<AppLanguage, TranslationDictionary> = {
     filterUpperLimb: 'कंधा और बांह',
     filterLowerLimb: 'घुटना और कूल्हा',
     filterSports: 'स्पोर्ट्स एथलेटिक',
+    videoVault: 'एचडी वीडियो वॉल्ट',
+    videoVaultTag: '₹200 GPay पास',
+    videoVaultPrice: '₹200 लाइफटाइम पास',
+    consultationSplitNote: 'होम विज़िट / टेलीरिहैब / वीडियो कॉल: ₹800 (बुकिंग के समय ₹400 + रिहैब के बाद ₹400)',
   },
   gu: {
     clinicalTriage: 'ક્લિનિકલ ટ્રાયેજ',
@@ -141,5 +153,10 @@ export const TRANSLATIONS: Record<AppLanguage, TranslationDictionary> = {
     filterUpperLimb: 'ખભો અને હાથ',
     filterLowerLimb: 'ઘૂંટણ અને થાપો',
     filterSports: 'સ્પોર્ટ્સ એથ્લેટિક',
+    videoVault: 'એચડી વિડિઓ વૉલ્ટ',
+    videoVaultTag: '₹200 GPay પાસ',
+    videoVaultPrice: '₹200 લાઈફટાઈમ પાસ',
+    consultationSplitNote: 'હોમ વિઝિટ / ટેલિરિહેબ / વિડિઓ કૉલ: ₹800 (બુકિંગ વખતે ₹400 + રિહેબ પછી ₹400)',
   },
 };
+
