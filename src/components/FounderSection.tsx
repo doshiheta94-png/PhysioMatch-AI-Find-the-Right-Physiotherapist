@@ -60,17 +60,17 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
         <div className="lg:col-span-8 space-y-4">
           <div>
             <span className="text-[11px] font-bold tracking-wider text-teal-400 uppercase">
-              Academic & Clinical Leadership
+              Clinical & Research Leadership
             </span>
             <h4 className="text-xl md:text-2xl font-extrabold text-white mt-0.5 tracking-tight">
-              PARUL INSTITUTE OF PHYSIOTHERAPY & RESEARCH
+              ADVANCED MUSCULOSKELETAL & SPORTS PHYSIOTHERAPY PRACTICE
             </h4>
             <div className="flex items-center gap-2 text-xs text-slate-300 mt-1 flex-wrap">
-              <span className="font-semibold text-teal-300">FACULTY OF PHYSIOTHERAPY</span>
+              <span className="font-semibold text-teal-300">SPECIALIST CLINICAL RESEARCH</span>
               <span aria-hidden="true" className="text-slate-600">·</span>
-              <span>PARUL UNIVERSITY (NAAC A++ Accredited)</span>
+              <span>Evidence-Informed Orthopaedic Rehabilitation</span>
               <span aria-hidden="true" className="text-slate-600">·</span>
-              <span>Limda, Vadodara</span>
+              <span>Vadodara, India & Global Telehealth</span>
             </div>
           </div>
 
@@ -87,9 +87,9 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
               </div>
             </div>
             <div className="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700/80 text-xs">
-              <div className="text-teal-400 font-bold text-sm">NAAC A++ University</div>
+              <div className="text-teal-400 font-bold text-sm">Ph.D. Doctoral Scholar</div>
               <div className="text-[11px] text-slate-300 mt-1 leading-snug">
-                Institutional Research & Clinical Standards
+                Translational Spine & Sports Clinical Research
               </div>
             </div>
             <div className="p-3.5 rounded-2xl bg-slate-800/80 border border-slate-700/80 text-xs">
@@ -103,15 +103,10 @@ export const FounderSection: React.FC<FounderSectionProps> = ({
           {/* Contact Details & Direct Booking Action */}
           <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800">
             <div className="flex items-center gap-4 text-xs text-slate-300 flex-wrap">
-              <a
-                href={founder.universityWebsite}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-teal-300 transition-colors flex items-center gap-1.5 font-medium"
-              >
-                <Globe className="w-3.5 h-3.5 text-teal-400" />
-                <span>www.paruluniversity.ac.in</span>
-              </a>
+              <div className="flex items-center gap-1.5 font-medium text-teal-300">
+                <MapPin className="w-3.5 h-3.5 text-teal-400" />
+                <span>Vadodara · Gujarat</span>
+              </div>
               <span aria-hidden="true" className="text-slate-600">·</span>
               <a
                 href={`tel:${founder.contactMobile}`}

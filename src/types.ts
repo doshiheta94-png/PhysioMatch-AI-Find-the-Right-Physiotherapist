@@ -14,7 +14,7 @@ export interface TriageProfile {
   anatomicalZone: AnatomicalZone;
   subRegion: string;
   painLevel: number; // 1-10
-  painType: string[]; // e.g. ['Aching', 'Stabbing', 'Radiating', 'Stiffness', 'Burning']
+  painType: string[];
   duration: '< 2 weeks' | '2-6 weeks' | '6-12 weeks' | '> 3 months';
   isPostOp: boolean;
   postOpDetails?: string;
@@ -60,10 +60,10 @@ export interface Physiotherapist {
   rating: number;
   reviewCount: number;
   experienceYears: number;
-  qualifications: string[]; // Degrees & Certifications e.g. ['M.P.Th. Musculoskeletal', 'Ph.D. Scholar', 'B.P.T.']
-  boardCertifications: string[]; // e.g. ['Board Certified Orthopedic Specialist (OCS)', 'Cert. MDT (McKenzie)']
-  specializations: string[]; // e.g. ['Rotator Cuff Pathology', 'Lumbar Radiculopathy', 'Sports Injuries']
-  clinicalTechniques: string[]; // e.g. ['Maitland Joint Mobilization', 'Dry Needling & IMS', 'McKenzie Method']
+  qualifications: string[];
+  boardCertifications: string[];
+  specializations: string[];
+  clinicalTechniques: string[];
   primaryZones: AnatomicalZone[];
   feeInitial: number;
   feeFollowup: number;
@@ -81,7 +81,7 @@ export interface Physiotherapist {
 }
 
 export interface MatchScoreBreakdown {
-  overallScore: number; // 0-100
+  overallScore: number;
   zoneMatch: boolean;
   specialtyAlignment: string;
   techniqueRelevance: string[];
@@ -106,4 +106,31 @@ export interface Booking {
   status: 'Confirmed' | 'Pending Clinical Review' | 'Completed';
   createdAt: string;
   intakeSummary?: string;
+  clinicalNotes?: string;
+}
+
+// Home Exercise Program (HEP)
+export interface HomeExercise {
+  id: string;
+  title: string;
+  targetArea: string;
+  reps: string;
+  sets: string;
+  holdSeconds: number;
+  frequency: string;
+  description: string;
+  techniqueBullets: string[];
+  category: 'Mobility' | 'Strengthening' | 'Stability' | 'Neurodynamics';
+  completedToday: boolean;
+}
+
+// Recovery Progress Data Point for Recharts
+export interface RecoveryProgressPoint {
+  week: string;
+  date: string;
+  vasPainScore: number; // 0-10
+  functionalMobility: number; // 0-100%
+  exerciseAdherence: number; // 0-100%
+  completedCount: number;
+  targetCount: number;
 }

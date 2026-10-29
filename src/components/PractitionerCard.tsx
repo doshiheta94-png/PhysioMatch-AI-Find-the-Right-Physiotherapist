@@ -16,12 +16,11 @@ interface PractitionerCardProps {
 // Map of common clinical abbreviations to plain-language descriptions
 const ACRONYM_EXPLAINERS: Record<string, string> = {
   'CMP': 'Certified Mulligan Practitioner (Joint mobilization with movement)',
-  'M.P.Th.': 'Master of Physiotherapy in Musculoskeletal & Sports (Parul University)',
+  'M.P.Th.': 'Master of Physiotherapy in Musculoskeletal & Sports',
   'Ph.D.': 'Doctor of Philosophy Scholar in Musculoskeletal Physiotherapy',
   'GSCPT': 'Gujarat State Council for Physiotherapy (Statutory licensing council)',
   'IAP': 'Indian Association of Physiotherapists (National professional governing body)',
   'MWM': 'Mobilization with Movement (Painless mechanical glide during active motion)',
-  'NAAC': 'National Assessment and Accreditation Council (A++ Top Academic Tier)',
 };
 
 export const PractitionerCard: React.FC<PractitionerCardProps> = ({
@@ -59,9 +58,9 @@ export const PractitionerCard: React.FC<PractitionerCardProps> = ({
             </div>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-900 bg-amber-50 border border-amber-200 px-3 py-1 rounded-full self-start sm:self-auto">
-            <Award className="w-3.5 h-3.5 text-amber-700" />
-            <span>Academic Lead · Parul University</span>
+          <div className="inline-flex items-center gap-1.5 text-xs font-bold text-teal-900 bg-teal-50 border border-teal-200 px-3 py-1 rounded-full self-start sm:self-auto">
+            <Award className="w-3.5 h-3.5 text-teal-700" />
+            <span>Assistant Professor · Ph.D. Scholar</span>
           </div>
         </div>
 
@@ -111,17 +110,12 @@ export const PractitionerCard: React.FC<PractitionerCardProps> = ({
               </span>
             </div>
 
-            {/* Quick Contact & University links */}
+            {/* Quick Contact & Direct Consultation Line */}
             <div className="flex items-center justify-center sm:justify-start gap-4 text-xs text-slate-600 mt-2.5 flex-wrap">
-              <a
-                href={therapist.universityWebsite}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-teal-700 hover:text-teal-900 flex items-center gap-1 font-medium hover:underline"
-              >
-                <Globe className="w-3 h-3 text-teal-600" />
-                <span>www.paruluniversity.ac.in</span>
-              </a>
+              <span className="text-teal-800 font-medium flex items-center gap-1">
+                <ShieldCheck className="w-3.5 h-3.5 text-teal-600" />
+                <span>GSCPT & IAP Registered Specialist</span>
+              </span>
               <span aria-hidden="true" className="text-slate-300">·</span>
               <a
                 href={`tel:${therapist.contactMobile}`}
@@ -138,7 +132,7 @@ export const PractitionerCard: React.FC<PractitionerCardProps> = ({
         <div className="mt-4 pt-3.5 border-t border-slate-100 flex items-center gap-1.5 text-xs text-slate-600">
           <ShieldCheck className="w-4 h-4 text-teal-600 shrink-0" />
           <span className="truncate">
-            Verified {therapist.verifiedBoard} ({therapist.registrationNumber}) · NAAC A++ Institutional Rigor
+            Verified {therapist.verifiedBoard} ({therapist.registrationNumber}) · Advanced Musculoskeletal & Sports Practice
           </span>
         </div>
 

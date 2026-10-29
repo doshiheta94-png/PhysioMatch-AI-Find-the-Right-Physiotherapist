@@ -14,7 +14,9 @@ import { PractitionerModal } from './components/PractitionerModal';
 import { BookingModal } from './components/BookingModal';
 import { FounderSection } from './components/FounderSection';
 import { ConsultationsView } from './components/ConsultationsView';
-import { Navbar } from './components/Navbar';
+import { Navbar, MainNavTab } from './components/Navbar';
+import { MyHealthJourney } from './components/MyHealthJourney';
+import { Postural5DAnalysis } from './components/Postural5DAnalysis';
 import { TriageProgressBar } from './components/TriageProgressBar';
 import { AnimatedCounter } from './components/AnimatedCounter';
 import { TestimonialSlider } from './components/TestimonialSlider';
@@ -33,6 +35,8 @@ import {
   MapPin,
   Clock,
   Layers,
+  Activity,
+  Video,
 } from 'lucide-react';
 
 type CurrencyCode = 'USD' | 'INR' | 'GBP' | 'EUR';
@@ -49,7 +53,7 @@ export default function App() {
   const founderRef = useRef<HTMLDivElement>(null);
 
   // Active Main Navigation Tab
-  const [activeTab, setActiveTab] = useState<'match' | 'consultations'>('match');
+  const [activeTab, setActiveTab] = useState<MainNavTab>('match');
 
   // International Currency Selector
   const [currency, setCurrency] = useState<CurrencyCode>('USD');
@@ -169,7 +173,7 @@ export default function App() {
               <Globe className="w-3 h-3" />
               <span>Global Clinical Care:</span>
             </span>
-            <span>In-Clinic (Parul University, Vadodara) & Worldwide Telehealth Consultations</span>
+            <span>In-Clinic (Vadodara, Gujarat) & Worldwide Telehealth Consultations</span>
           </div>
 
           <div className="flex items-center gap-2">
@@ -207,12 +211,15 @@ export default function App() {
 
       {/* Main Viewport Container */}
       <main className="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full space-y-12">
-        {activeTab === 'consultations' ? (
-          /* Consultations & Pre-Visit Intake Note Records */
-          <ConsultationsView
+        {activeTab === 'journey' ? (
+          /* Secure 'My Health Journey' Patient Dashboard (Recharts recovery trajectory, assigned HEP & past consultations) */
+          <MyHealthJourney
             bookings={bookings}
-            onFindMore={() => setActiveTab('match')}
+            onBookNew={() => setIsBookingModalOpen(true)}
           />
+        ) : activeTab === 'posture5d' ? (
+          /* 5D Postural Video Kinematics & Interactive Guide Video Suite */
+          <Postural5DAnalysis />
         ) : (
           /* Primary Clinical Triage & Consultation Experience */
           <>
@@ -227,7 +234,7 @@ export default function App() {
                   Evidence-Informed Physiotherapy with Dr. Heta Doshi (PT)
                 </h1>
                 <p className="text-sm sm:text-base text-slate-600 mt-3 leading-relaxed">
-                  Led by Assistant Professor Dr. Heta Doshi (Ph.D. Scholar, M.P.Th. Musculoskeletal & Sports) at Parul University. Map your pain on our interactive anatomical body map to receive a tailored clinical protocol, evidence-informed rationale, and direct consultation booking.
+                  Led by Assistant Professor Dr. Heta Doshi (Ph.D. Scholar, M.P.Th. Musculoskeletal & Sports). Map your pain on our interactive anatomical body map to receive a tailored clinical protocol, evidence-informed rationale, and direct consultation booking.
                 </p>
               </div>
 
@@ -262,7 +269,7 @@ export default function App() {
                     <AnimatedCounter end={12} suffix="+" />
                   </div>
                   <div className="text-xs font-bold text-slate-900 mt-1">Years Clinical & Academic Exp</div>
-                  <div className="text-[11px] text-slate-500">Parul University Faculty</div>
+                  <div className="text-[11px] text-slate-500">Assistant Professor & Researcher</div>
                 </div>
               </div>
             </section>
@@ -380,7 +387,7 @@ export default function App() {
             {/* Testimonials Slider (Verified Patient Outcomes with Dr. Heta Doshi) */}
             <TestimonialSlider />
 
-            {/* Parul University Biomechanics & Clinical Facilities Carousel */}
+            {/* Advanced Musculoskeletal Biomechanics & Clinical Facilities Carousel */}
             <FacilityCarousel />
 
             {/* Clinical FAQ & Medical Red Flags Accordion */}
@@ -426,33 +433,33 @@ export default function App() {
             <div>
               <Logo size="sm" />
               <p className="text-slate-500 mt-2 max-w-md">
-                Official clinical platform of Dr. Heta Doshi (PT), Assistant Professor at Parul Institute of Physiotherapy & Research, Faculty of Physiotherapy, Parul University (NAAC A++ Accredited).
+                Official clinical platform of Dr. Heta Doshi (PT), Assistant Professor in Musculoskeletal & Sports Physiotherapy, Ph.D. Scholar (GSCPT & IAP Verified).
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-slate-600">
               <div>
-                <div className="font-bold text-slate-900">Clinical Institute Address</div>
+                <div className="font-bold text-slate-900">Clinical Practice Location</div>
                 <div className="text-[11px] text-slate-500 mt-0.5">
-                  Parul University Campus, Limda, Vadodara, Gujarat 391760
+                  Vadodara, Gujarat, India & Worldwide Telehealth Consultations
                 </div>
               </div>
 
               <div>
-                <div className="font-bold text-slate-900">Direct Contact & Web</div>
+                <div className="font-bold text-slate-900">Direct Contact & Booking</div>
                 <div className="text-[11px] text-slate-500 mt-0.5">
-                  <a href="https://www.paruluniversity.ac.in" target="_blank" rel="noopener noreferrer" className="hover:text-teal-700 underline">
-                    www.paruluniversity.ac.in
+                  <a href="tel:9737555022" className="hover:text-teal-700 underline font-semibold text-slate-800">
+                    Mobile: +91 9737555022
                   </a>
-                  {' '}· Mo: +91 9737555022
+                  {' '}· In-Clinic & Telehealth
                 </div>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-slate-400">
-            <span>© {new Date().getFullYear()} Dr. Heta Doshi (PT) · Parul University. All rights reserved.</span>
-            <span>Worldwide Telehealth & In-Clinic Musculoskeletal Consultations</span>
+            <span>© {new Date().getFullYear()} Dr. Heta Doshi (PT). All rights reserved.</span>
+            <span>Evidence-Informed Musculoskeletal & Sports Rehabilitation</span>
           </div>
         </div>
       </footer>

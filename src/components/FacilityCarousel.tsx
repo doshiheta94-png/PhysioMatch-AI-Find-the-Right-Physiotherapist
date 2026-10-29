@@ -13,7 +13,7 @@ interface FacilitySlide {
 const FACILITIES: FacilitySlide[] = [
   {
     id: '1',
-    title: 'Parul University Musculoskeletal Biomechanics Lab',
+    title: 'Advanced Musculoskeletal Biomechanics & Motion Analysis Lab',
     category: 'Kinetic & Gait Analysis',
     description: 'High-speed multi-camera video capture with synchronized ground reaction force plates to detect subtle asymmetry during running, jumping, and lifting.',
     imageUrl: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80',
