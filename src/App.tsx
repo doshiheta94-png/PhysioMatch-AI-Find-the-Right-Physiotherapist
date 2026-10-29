@@ -25,6 +25,8 @@ import { ClinicalAccordion } from './components/ClinicalAccordion';
 import { FloatingActionButton } from './components/FloatingActionButton';
 import { Logo } from './components/Logo';
 import { AllConditions3DViewer } from './components/AllConditions3DViewer';
+import { MusculoskeletalExerciseSuite } from './components/MusculoskeletalExerciseSuite';
+import { AppLanguage, TRANSLATIONS } from './data/translations';
 import {
   ShieldCheck,
   Calendar,
@@ -37,6 +39,7 @@ import {
   Layers,
   Activity,
   Video,
+  Play,
 } from 'lucide-react';
 
 type CurrencyCode = 'USD' | 'INR' | 'GBP' | 'EUR';
@@ -54,6 +57,16 @@ export default function App() {
 
   // Active Main Navigation Tab
   const [activeTab, setActiveTab] = useState<MainNavTab>('match');
+
+  // Trilingual Application Language ('en' | 'hi' | 'gu')
+  const [currentLanguage, setCurrentLanguage] = useState<AppLanguage>(() => {
+    const saved = localStorage.getItem('physiomatch_lang');
+    return (saved as AppLanguage) || 'en';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('physiomatch_lang', currentLanguage);
+  }, [currentLanguage]);
 
   // International Currency Selector
   const [currency, setCurrency] = useState<CurrencyCode>('USD');
@@ -207,6 +220,8 @@ export default function App() {
         onSelectSpecialtyZone={handleSelectZone}
         bookingCount={bookings.length}
         onBookFounder={() => setIsBookingModalOpen(true)}
+        currentLanguage={currentLanguage}
+        onLanguageChange={setCurrentLanguage}
       />
 
       {/* Main Viewport Container */}
@@ -216,6 +231,13 @@ export default function App() {
           <MyHealthJourney
             bookings={bookings}
             onBookNew={() => setIsBookingModalOpen(true)}
+          />
+        ) : activeTab === 'exercises' ? (
+          /* Musculoskeletal & Sports Exercise Suite with Easy Video and Voice Input in English, Hindi, and Gujarati */
+          <MusculoskeletalExerciseSuite
+            currentLanguage={currentLanguage}
+            onLanguageChange={setCurrentLanguage}
+            onBookExerciseConsultation={() => setIsBookingModalOpen(true)}
           />
         ) : activeTab === 'conditions3d' ? (
           /* 3D & 5D Interactive Body Condition Atlas Suite */
@@ -291,6 +313,37 @@ export default function App() {
                   </div>
                   <div className="text-xs font-bold text-slate-900 mt-1">Years Clinical & Academic Exp</div>
                   <div className="text-[11px] text-slate-500">Assistant Professor & Researcher</div>
+                </div>
+              </div>
+
+              {/* Trilingual Voice Input & Easy Exercise Video Featured Banner */}
+              <div className="bg-gradient-to-r from-slate-900 to-slate-950 text-white rounded-3xl p-6 sm:p-7 border border-slate-800 shadow-lg flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+                <div className="space-y-2 max-w-2xl">
+                  <div className="flex flex-wrap items-center gap-2">
+                    <span className="px-2.5 py-0.5 rounded-md bg-teal-500/20 text-teal-300 font-mono text-[11px] font-bold border border-teal-500/30">
+                      NEW: TRILINGUAL EXERCISE & VOICE SUITE
+                    </span>
+                    <span className="px-2 py-0.5 rounded-md bg-slate-800 text-slate-300 text-xs font-semibold">
+                      English · हिन्दी · ગુજરાતી
+                    </span>
+                  </div>
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-white">
+                    Hands-Free Voice Guidance & Easy Animated Video for Musculoskeletal & Sports Rehab
+                  </h3>
+                  <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Practice prescribed home exercises with 60fps vector animated motion videos, automated rep counters, and natural voice input commands ("Start", "Pause", "Next", "शुरू કરો", "ગણતરી") in your native language.
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0 w-full md:w-auto">
+                  <button
+                    type="button"
+                    onClick={() => setActiveTab('exercises')}
+                    className="px-5 py-3 rounded-xl bg-teal-600 hover:bg-teal-500 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2"
+                  >
+                    <Play className="w-4 h-4" />
+                    <span>Open Exercise & Voice Guide</span>
+                  </button>
                 </div>
               </div>
             </section>
